@@ -5,3 +5,5 @@ obj/
 # Executable files
 bin/
 
+# Test directories
+test/

@@ -1,3 +1,7 @@
 # Object files
 *.o
+obj/
+
+# Executable files
+bin/
 

@@ -1,6 +1,6 @@
 IDIR=inc
 CC=g++
-CFLAGS=-I$(IDIR)
+CFLAGS=-std=c++11 -I$(IDIR)
 
 ODIR=obj
 LIB=lib

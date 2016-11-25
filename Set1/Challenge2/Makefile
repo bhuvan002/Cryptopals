@@ -5,7 +5,7 @@ LIBDIR=../../Lib/lib
 LIB=crypto
 
 
-CFLAGS=-I$(IDIR)
+CFLAGS=-std=c++11 -I$(IDIR)
 LIBFLAGS=-L$(LIBDIR) -l$(LIB)
 
 ODIR=obj

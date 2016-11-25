@@ -1,12 +1,5 @@
 # Object files
 *.o
-obj/
-
-# Executable files
-bin/
-
-# Test directories
-test/
 
 # Static libraries
 *.a

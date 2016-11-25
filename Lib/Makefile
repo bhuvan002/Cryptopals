@@ -14,9 +14,11 @@ OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
 all: crypto
 
-$(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
+$(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS) | $(ODIR)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
+$(ODIR):
+	mkdir -p $@
 
 $(LIB)/libcrypto.a: $(OBJ)
 	ar -cvq $@ $^

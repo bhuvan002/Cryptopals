@@ -20,8 +20,11 @@ OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
 all: $(BIN)/fixed_xor
 
-$(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
+$(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS) | $(ODIR)
 	$(CC) -c -o $@ $< $(CFLAGS)
+
+$(ODIR):
+	mkdir -p $@
 
 $(BIN)/fixed_xor: $(OBJ) libcrypto
 	$(CC) -g -o $@ $< $(CFLAGS) $(LIBFLAGS)

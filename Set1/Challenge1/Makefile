@@ -20,8 +20,11 @@ OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
 all: $(BIN)/hex2base64
 
-$(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
+$(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS) | $(ODIR)
 	$(CC) -c -o $@ $< $(CFLAGS)
+
+$(ODIR):
+	mkdir -p $@
 
 $(BIN)/hex2base64: $(OBJ) libcrypto
 	$(CC) -g -o $@ $< $(CFLAGS) $(LIBFLAGS)

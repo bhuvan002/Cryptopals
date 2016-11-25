@@ -20,8 +20,11 @@ $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS) | $(ODIR)
 $(ODIR):
 	mkdir -p $@
 
-$(LIB)/libcrypto.a: $(OBJ)
+$(LIB)/libcrypto.a: $(OBJ) | $(LIB)
 	ar -cvq $@ $^
+
+$(LIB):
+	mkdir -p $@
 
 .PHONY: clean crypto all
 

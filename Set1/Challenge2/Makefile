@@ -15,15 +15,15 @@ SDIR=src
 _DEPS = crypto.h
 DEPS = $(patsubst %, $(IDIR)/%, $(_DEPS))
 
-_OBJ = hex2base64.o
+_OBJ = fixed_xor.o
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
-all: $(BIN)/hex2base64
+all: $(BIN)/fixed_xor
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(BIN)/hex2base64: $(OBJ) libcrypto
+$(BIN)/fixed_xor: $(OBJ) libcrypto
 	$(CC) -g -o $@ $< $(CFLAGS) $(LIBFLAGS)
 
 .PHONY: clean libcrypto

@@ -7,3 +7,6 @@ bin/
 
 # Test directories
 test/
+
+# Static libraries
+*.a

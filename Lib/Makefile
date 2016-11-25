@@ -9,7 +9,7 @@ SDIR=src
 _DEPS =
 DEPS = $(patsubst %, $(IDIR)/%, $(_DEPS))
 
-_OBJ = encodings.o xor.o
+_OBJ = encodings.o xor.o natural_language.o
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
 all: crypto

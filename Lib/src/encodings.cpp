@@ -86,3 +86,21 @@ string byte2hex(const vector<uint8_t> &byte_array) {
     hex_str[2*len+1] = '\0';
     return string(hex_str);
 }
+
+string byte2str(const vector<uint8_t> &byte_array) {
+	int len = byte_array.size();
+	string str(len, ' ');
+	for (int i = 0; i < len; i++) {
+		str[i] = (char)byte_array[i];
+	}
+	return str;
+}
+
+vector<uint8_t> str2byte(const string &str) {
+	int len = str.size();
+	vector<uint8_t> byte_array(len, 0);
+	for (int i = 0; i < len; i++) {
+		byte_array[i] = (uint8_t)str[i];
+	}
+	return byte_array;
+}

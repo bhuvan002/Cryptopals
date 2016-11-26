@@ -3,3 +3,6 @@
 
 # Static libraries
 *.a
+
+# Binary files
+bin/*

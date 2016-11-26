@@ -59,7 +59,7 @@ int main() {
 				frequencies[26] += 1;
 			}
 			else {
-				// total_count++;
+				total_count++;
 				frequencies[27] += 1;
 			}
 		}

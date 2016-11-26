@@ -3,16 +3,20 @@
 using namespace std;
 
 // Calculates viability of a frequency array using chi-squared statistic
-double freq_score(const vector<double> &frequencies) {
-	const static vector<double> english_frequencies = {
-		8.167, 1.492, 2.782, 4.253, 12.702, 2.228, 2.015, 6.094, // a,b,c,d,e,f,g,h
-		6.996, 0.153, 0.772, 4.025, 2.406, 6.749, 7.507, 1.929, // i,j,k,l,m,n,o,p
-		0.095, 5.987, 6.327, 9.056, 2.758, 0.978, 2.360, 0.150, // q,r,s,t,u,v,w,x
-		1.974, 0.074											// y,z
-	};
+double freq_score(const vector<long> &frequencies, long len) {
+	const static vector<double> english_frequencies = { 
+		0.0651738, 0.0124248, 0.0217339, 0.0349835,  //'A', 'B', 'C', 'D',...
+		0.1041442, 0.0197881, 0.0158610, 0.0492888, 
+		0.0558094, 0.0009033, 0.0050529, 0.0331490,
+		0.0202124, 0.0564513, 0.0596302, 0.0137645, 
+		0.0008606, 0.0497563, 0.0515760, 0.0729357, 
+		0.0225134, 0.0082903, 0.0171272, 0.0013692, 
+		0.0145984, 0.0007836, 0.1918182} ; //'Y', 'Z', ' '
 	double score = 0.0;
-	for (int i = 0; i < 26; i++) {
-		score += ((frequencies[i]-english_frequencies[i])*(frequencies[i] - english_frequencies[i]))/english_frequencies[i];
+	for (int i = 0; i < 27; i++) {
+		double observed = (double)frequencies[i], expected = english_frequencies[i]*len;
+		double difference = observed - expected;
+		score += difference*difference / expected;
 	}
 	return score;
 }

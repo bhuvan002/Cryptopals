@@ -4,4 +4,4 @@
 
 using std::vector;
 
-double freq_score(const vector<double> &);
+double freq_score(const vector<long> &, long);

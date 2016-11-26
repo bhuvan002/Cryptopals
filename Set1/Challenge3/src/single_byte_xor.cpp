@@ -43,25 +43,25 @@ int main() {
 	
 	// Using uint16_t so that this loop doesnt go into an infinite loop
 	for (uint16_t byte = 0; byte < (1<<8); byte++) {  
-		vector<double> frequencies(26, 0.0);
+		vector<long> frequencies(26, 0.0);
 		vector<uint8_t> result = single_byte_xor(byte_arr, (uint8_t)byte);
 		int len = result.size();
-		int total_count = 0;
+		long total_count = 0;
 		for (int j = 0; j < len; j++) {
 			char c = (char)result[j];
 			if (isalpha(c)) {
 				total_count++;
 				if (isupper(c)) c = tolower(c);
-				frequencies[c - 'a'] += 1.0;
+				frequencies[c - 'a'] += 1;
+			}
+			else if (c == ' ') {
+				total_count++;
+				frequencies[26] += 1;
 			}
 		}
 		if (total_count == 0) continue;
-		for (int j = 0; j < 26; j++) {
-			frequencies[j] = (frequencies[j] / (double)total_count) * 100.0;
-			// cout << (char)('a'+j) << " ::= " << frequencies[j] << " ";
-		}
 		// cout << "\n";
-		double score = freq_score(frequencies);
+		double score = freq_score(frequencies, total_count);
 		// cout << "Cur byte = " << byte << " Cur score = " << score << "\n";
 		if (score < min_score) {
 			min_score = score;

@@ -26,8 +26,11 @@ $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS) | $(ODIR)
 $(ODIR):
 	mkdir -p $@
 
-$(BIN)/hex2base64: $(OBJ) libcrypto
+$(BIN)/hex2base64: $(OBJ) libcrypto | $(BIN)
 	$(CC) -g -o $@ $< $(CFLAGS) $(LIBFLAGS)
+
+$(BIN):
+	mkdir -p $@
 
 .PHONY: clean libcrypto
 

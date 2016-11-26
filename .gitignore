@@ -5,4 +5,7 @@
 *.a
 
 # Binary files
-bin/*
+bin/
+
+# Compiled libraries
+Lib/lib

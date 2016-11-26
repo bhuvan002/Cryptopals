@@ -43,7 +43,7 @@ int main() {
 	
 	// Using uint16_t so that this loop doesnt go into an infinite loop
 	for (uint16_t byte = 0; byte < (1<<8); byte++) {  
-		vector<long> frequencies(26, 0.0);
+		vector<long> frequencies(28, 0.0);
 		vector<uint8_t> result = single_byte_xor(byte_arr, (uint8_t)byte);
 		int len = result.size();
 		long total_count = 0;
@@ -57,6 +57,10 @@ int main() {
 			else if (c == ' ') {
 				total_count++;
 				frequencies[26] += 1;
+			}
+			else {
+				// total_count++;
+				frequencies[27] += 1;
 			}
 		}
 		if (total_count == 0) continue;

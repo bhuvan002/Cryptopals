@@ -21,7 +21,7 @@ $(ODIR):
 	mkdir -p $@
 
 $(LIB)/libcrypto.a: $(OBJ) | $(LIB)
-	ar -cvq $@ $^
+	ar -cvr $@ $^
 
 $(LIB):
 	mkdir -p $@
